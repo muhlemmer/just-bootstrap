@@ -1,0 +1,19 @@
+[module]
+[module.hugoVersion]
+    min = "0.96.0"
+
+[[module.mounts]]
+    source = "assets"
+    target = "assets"
+
+[[module.mounts]]
+    source = "bootstrap/dist/js"
+    target = "assets/js"
+
+[[module.mounts]]
+    source = "assets/scss"
+    target = "assets/scss"
+
+[[module.mounts]]
+    source = "bootstrap/scss"
+    target = "assets/scss"
