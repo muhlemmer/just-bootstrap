@@ -1,15 +1,17 @@
 {{ define "main" }}
-  <article>
-    <section>
-      {{- .Content -}}
-    </section>
-    <section>
-      {{ range .Paginator.Pages }}
-        <div>
-          {{ .Render "summary" }}
-        </div>
-      {{ end }}
-    </section>
-    {{- template "_internal/pagination.html" . -}}
-  </article>
+<article>
+  <section>
+    {{- .Content -}}
+  </section>
+  <section class="container">
+    {{ range .Paginator.Pages }}
+    <div class="row">
+      <div class="col">
+        {{ .Render "summary" }}
+      </div>
+    </div>
+    {{ end }}
+  </section>
+  {{- template "_internal/pagination.html" . -}}
+</article>
 {{ end }}

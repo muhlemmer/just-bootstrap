@@ -1,11 +1,18 @@
-<!DOCTYPE html>
-<html>
-    {{- partial "head.html" . -}}
-    <body>
-        {{- partial "header.html" . -}}
-        <div id="content">
-        {{- block "main" . }}{{- end }}
-        </div>
-        {{- partial "footer.html" . -}}
-    </body>
-</html>
+{{ define "main" }}
+{{ $section := .Site.GetPage "section" .Section }}
+<article class=container>
+  <header>
+    <h1>
+      {{- .Title -}}
+    </h1>
+    {{ if not .Date.IsZero }}
+    <time {{ printf `datetime="%s" ` (.Date.Format "2006-01-02T15:04:05Z07:00" ) | safeHTMLAttr }}>
+      {{- .Date | time.Format (default "January 2, 2006" .Site.Params.date_format) -}}
+    </time>
+    {{end}}
+  </header>
+  <div class="container">
+    {{- .Content -}}
+  </div>
+</article>
+{{ end }}
